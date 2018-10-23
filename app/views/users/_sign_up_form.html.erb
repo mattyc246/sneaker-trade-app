@@ -1,33 +1,57 @@
-<div class="mx-auto">
+<div class="mx-auto m-2 p-5 border border-success rounded shadow-lg">
 	<h3> Register for a Shrade account! </h3>
-	<div class="d-flex">
-	<%= form_for :user, url: {action: "create"} do |f| %>
-	<div class="form-group">
-		<%= f.label 'First Name' %>
-		<%= f.text_field :first_name, class:"form-control" %></br>
-	</div>
-	<div class="form-group">
-		<%= f.label 'Last Name' %>
-		<%= f.text_field :last_name, class:"form-control" %></br>
-	</div>
-		<%= f.label 'Email' %>
-		<%= f.text_field :email, class:"form-control" %></br>
-		<%= f.label 'Password' %>
-		<%= f.password_field :password, class:"form-control" %></br>
-		<%= f.label 'Address' %>
-		<%= f.text_field :address, class:"form-control" %></br>
-		<%= f.label 'City' %>
-		<%= f.text_field :city, class:"form-control" %></br>
-		<%= f.label 'State' %>
-		<%= f.text_field :state, class:"form-control" %></br>
-		<%= f.label 'Postcode' %>
-		<%= f.text_field :postcode, class:"form-control" %></br>
-		<%= f.label 'Country' %></br>
-		<%= f.select :country, grouped_options_for_select(User.country_list), class:"form-control" %></br>
-		<%= f.label 'Phone Number' %>
-		<%= f.text_field :phone_number, class:"form-control" %></br>
-		<%= f.label 'Profile Photo' %></br>
-		<%= f.file_field :photo, multiple: false, class:'ml-5' %></br>
+	<div class="d-flex flex-column">
+		<%= form_for :user, url: {action: "create"} do |f| %>
+		<div class="d-inline-flex">
+			<div class="form-group pr-2">
+				<%= f.label 'First Name' %>
+				<%= f.text_field :first_name, class:"form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Last Name' %>
+				<%= f.text_field :last_name, class:"form-control" %>
+			</div>
+		</div>
+		<div class="mx-auto">
+			<%= f.label 'Email' %>
+			<%= f.text_field :email, class:"form-control" %>
+		</div>
+		<div class="mx-auto">
+			<%= f.label 'Password' %>
+			<%= f.password_field :password, class:"form-control" %>
+		</div>
+		<div class="mx-auto">
+			<%= f.label 'Address' %>
+			<%= f.text_field :address, class:"form-control" %>
+		</div>
+		<div class="d-inline-flex">
+			<div class="form-group pr-2">
+				<%= f.label 'City' %>
+				<%= f.text_field :city, class:"form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label 'State' %>
+				<%= f.text_field :state, class:"form-control" %>
+			</div>
+		</div>
+		<div class="mx-auto">
+			<%= f.label 'Country' %>
+			<%= f.select :country, grouped_options_for_select(User.country_list), {}, class:"form-control" %>
+		</div>
+		<div class="d-inline-flex">
+			<div class="form-group pr-2">
+				<%= f.label 'Postcode' %>
+				<%= f.text_field :postcode, class:"form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Phone Number' %>
+				<%= f.text_field :phone_number, class:"form-control" %>
+			</div>
+		</div>
+		<div class="mx-auto">
+			<%= f.label 'Profile Photo' %></br>
+			<%= f.file_field :photo, multiple: false, class:'ml-5' %>
+		</div>
 		<%= f.submit "Register Account", class:"btn btn-outline-dark mt-3" %>
 	</div>
 	<% end %>
