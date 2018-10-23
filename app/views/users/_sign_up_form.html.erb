@@ -1,0 +1,28 @@
+<h2>Sign Up Form</h2>
+
+	
+	<%= form_for :user, url: {action: "create"} do |f| %>
+		<%= f.label 'First Name' %>
+		<%= f.text_field :first_name %></br>
+		<%= f.label 'Last Name' %>
+		<%= f.text_field :last_name %></br>
+		<%= f.label 'Email' %>
+		<%= f.text_field :email %></br>
+		<%= f.label 'Password' %>
+		<%= f.password_field :password %></br>
+		<%= f.label 'Address' %>
+		<%= f.text_field :address %></br>
+		<%= f.label 'City' %>
+		<%= f.text_field :city %></br>
+		<%= f.label 'State' %>
+		<%= f.text_field :state %></br>
+		<%= f.label 'Postcode' %>
+		<%= f.text_field :postcode %></br>
+		<%= f.label 'Country' %>
+		<%= f.select :country, grouped_options_for_select(User.country_list)%></br>
+		<%= f.label 'Phone Number' %>
+		<%= f.text_field :phone_number %></br>
+		<%= f.label 'Profile Photo' %>
+		<%= f.file_field :photo, multiple: false %></br>
+		<%= f.submit "Register Account" %>
+	<% end %>
