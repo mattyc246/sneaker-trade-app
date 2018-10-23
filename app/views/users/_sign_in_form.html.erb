@@ -1,1 +1,9 @@
 <h2>Sign In Form</h2>
+
+<%= form_for :user, url: {action: "sign_in"} do |f| %>
+		<%= f.label 'Email' %>
+		<%= f.text_field :email %></br>
+		<%= f.label 'Password' %>
+		<%= f.password_field :password %></br>
+		<%= f.submit "Sign In" %>
+<% end %>
