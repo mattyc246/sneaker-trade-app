@@ -6,12 +6,12 @@
 			<h1 class="text-center">SHRADE!</h1>
 			<h4 class="text-center">With Shrade you can trade!</h4>
 			<p class="text-center">A Jordan for a Yeezy? How about a Boost US5 for a Boost US7?</p>
-				<div class="form-inline">
-				<%= form_with url: 'postings/search' do |form| %>
-		  			<%= form.text_field :search, style:"min-width: 500px;", class:"form-control shadow", placeholder:'Search for your dream sneaker...' %>
-		  			<%= form.submit "Search Sneakers...", class:"btn btn-outline-secondary ml-2 shadow" %>
-				<% end %>
-		  		</div>
+			<div class="form-inline">
+			<%= form_with url: 'postings/search' do |form| %>
+		  		<%= form.text_field :search, style:"min-width: 500px;", class:"form-control shadow",placeholder:'Search for your dream sneaker...' %>
+		  		<%= form.submit "Search Sneakers...", class:"btn btn-outline-secondary ml-2 shadow" %>
+			<% end %>
+		  	</div>
 		</div>
 	</div>
 </div>

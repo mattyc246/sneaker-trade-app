@@ -1,28 +1,30 @@
-<h2>Sign Up Form</h2>
-
-	
+<div class="mx-auto">
+	<h1> Register for a Shrade account! </h1>
 	<%= form_for :user, url: {action: "create"} do |f| %>
+	<div class="form-group">
 		<%= f.label 'First Name' %>
-		<%= f.text_field :first_name %></br>
+		<%= f.text_field :first_name, class:"form-control" %></br>
 		<%= f.label 'Last Name' %>
-		<%= f.text_field :last_name %></br>
+		<%= f.text_field :last_name, class:"form-control" %></br>
 		<%= f.label 'Email' %>
-		<%= f.text_field :email %></br>
+		<%= f.text_field :email, class:"form-control" %></br>
 		<%= f.label 'Password' %>
-		<%= f.password_field :password %></br>
+		<%= f.password_field :password, class:"form-control" %></br>
 		<%= f.label 'Address' %>
-		<%= f.text_field :address %></br>
+		<%= f.text_field :address, class:"form-control" %></br>
 		<%= f.label 'City' %>
-		<%= f.text_field :city %></br>
+		<%= f.text_field :city, class:"form-control" %></br>
 		<%= f.label 'State' %>
-		<%= f.text_field :state %></br>
+		<%= f.text_field :state, class:"form-control" %></br>
 		<%= f.label 'Postcode' %>
-		<%= f.text_field :postcode %></br>
-		<%= f.label 'Country' %>
-		<%= f.select :country, grouped_options_for_select(User.country_list)%></br>
+		<%= f.text_field :postcode, class:"form-control" %></br>
+		<%= f.label 'Country' %></br>
+		<%= f.select :country, grouped_options_for_select(User.country_list), class:"form-control" %></br>
 		<%= f.label 'Phone Number' %>
-		<%= f.text_field :phone_number %></br>
-		<%= f.label 'Profile Photo' %>
-		<%= f.file_field :photo, multiple: false %></br>
-		<%= f.submit "Register Account" %>
+		<%= f.text_field :phone_number, class:"form-control" %></br>
+		<%= f.label 'Profile Photo' %></br>
+		<%= f.file_field :photo, multiple: false, class:'ml-5' %></br>
+		<%= f.submit "Register Account", class:"btn btn-outline-dark mt-3" %>
+	</div>
 	<% end %>
+</div>
