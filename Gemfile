@@ -36,6 +36,12 @@ gem 'carrierwave', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Bootstrap 4 Rails Gem
+gem 'bootstrap', '~> 4.1.3'
+
+# jQuery For Rails
+gem 'jquery-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

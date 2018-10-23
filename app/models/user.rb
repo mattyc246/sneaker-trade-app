@@ -2,6 +2,21 @@ class User < ApplicationRecord
 
 	has_secure_password
 	mount_uploader :photo, PhotoUploader
+	validates :first_name, presence: true, on: :create
+	validates :last_name, presence: true, on: :create
+	validates :email, presence: true, on: :create
+	validates :email, uniqueness: true, format: {with:  /(\w+)@(\w+).(\w{2,})/, message: "Invalid Email Address"}
+	validates :password, presence: true, on: :create
+	validates :password, length: {in: 8..20}, on: :create
+	validates :address, presence: true, on: :create
+	validates :city, presence: true, on: :create
+	validates :state, presence: true, on: :create
+	validates :postcode, presence: true, on: :create
+	validates :country, presence: true, on: :create
+	validates :phone_number, presence: true, on: :create
+
+	has_many :postings
+	has_many :trades
 
 	def self.authenticate(check_password)
 

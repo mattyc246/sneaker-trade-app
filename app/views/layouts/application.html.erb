@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SneakerTradeApp</title>
+    <title>Shrade</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-light bg-transparent">
+      <a class="navbar-brand" href="/">
+        <%= image_tag 'airmax.png', width: 50, height: 50, class:"d-inline-block align-center" %>Shrade</a>
+      <ul class="nav justify-content-end">
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to 'Sign Out', sign_out_path %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Register Account', sign_up_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign In', sign_in_path, class:"nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
