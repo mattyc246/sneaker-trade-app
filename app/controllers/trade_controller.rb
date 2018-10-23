@@ -1,2 +1,0 @@
-class TradeController < ApplicationController
-end
