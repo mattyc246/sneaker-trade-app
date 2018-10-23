@@ -3,6 +3,16 @@ class User < ApplicationRecord
 	has_secure_password
 	mount_uploader :photo, PhotoUploader
 
+	def self.authenticate(check_password)
+
+		if check_password == self.password
+
+			return true
+
+		end
+
+	end
+
 	def self.country_list
 		{
 			'Country' => [

@@ -4,6 +4,22 @@ class UsersController < ApplicationController
 
 	end
 
+	def create
+
+		user = User.new(user_params)
+
+		if user.save
+
+			redirect_to root_path
+
+		else
+
+			redirect_to sign_up_path
+
+		end
+
+	end
+
 	def update
 
 	end
@@ -14,19 +30,35 @@ class UsersController < ApplicationController
 
 	def sign_up
 
-		user = User.new()
 
 	end
 
 	def sign_in
 
-		user = User.find(params[:email])
+	end
 
-		if params[:password] == user.password
+	def sign_out
 
-			session[:user_id] = user.id
-			flash[:notice] = "Successfully Logged In!"
-			redirect_to root_path
+		session[:user_id] = nil
+		redirect_to root_path
+
+	end
+
+	def login
+
+		if user = User.find_by(email: user_params[:email])
+
+			if user.authenticate(user_params[:password])
+
+				session[:user_id] = user.id
+				flash[:notice] = "Successfully Logged In!"
+				redirect_to root_path
+
+			else
+
+				redirect_to sign_in_path
+
+			end
 
 		end
 
