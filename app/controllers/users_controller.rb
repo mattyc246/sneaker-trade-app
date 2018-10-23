@@ -4,10 +4,6 @@ class UsersController < ApplicationController
 
 	end
 
-	def create
-
-	end
-
 	def update
 
 	end
@@ -17,6 +13,8 @@ class UsersController < ApplicationController
 	end
 
 	def sign_up
+
+		
 
 	end
 
