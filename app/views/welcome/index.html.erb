@@ -1,9 +1,17 @@
 <%= video_tag "sneakers-on-court.mp4", id: "backgroundVideo", autoplay: :autoplay, loop: :loop, mute: true %>
 
-<h1>Shrade</h1>
-<% if current_user %>
-<%= link_to 'Sign Out', sign_out_path %>
-<% else %>
-<%= link_to 'Register Account', sign_up_path %>
-<%= link_to 'Sign In', sign_in_path %>
-<% end %>
+<div class="container-fluid">
+	<div class="vertical-center">
+		<div class="mx-auto">
+			<h1 class="text-center">SHRADE!</h1>
+			<h4 class="text-center">With Shrade you can trade!</h4>
+			<p class="text-center">A Jordan for a Yeezy? How about a Boost US5 for a Boost US7?</p>
+				<div class="form-inline">
+				<%= form_with url: 'postings/search' do |form| %>
+		  			<%= form.text_field :search, style:"min-width: 500px;", class:"form-control shadow", placeholder:'Search for your dream sneaker...' %>
+		  			<%= form.submit "Search Sneakers...", class:"btn btn-outline-secondary ml-2 shadow" %>
+				<% end %>
+		  		</div>
+		</div>
+	</div>
+</div>
