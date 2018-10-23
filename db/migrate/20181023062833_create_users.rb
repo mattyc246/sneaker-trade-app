@@ -11,20 +11,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :postcode
       t.string :country
       t.string :phone_number
-      
+      t.string :profile_photo
       t.timestamps
     end
   end
 end
-
-Users:
-- First Name
-- Last Name
-- Email
-- Password (Password Digest - bcrypt)
-- Address
-- State
-- Postcode
-- Country
-- Phone Number
-- Profile Photo
