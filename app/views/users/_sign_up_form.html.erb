@@ -1,11 +1,15 @@
 <div class="mx-auto">
-	<h1> Register for a Shrade account! </h1>
+	<h3> Register for a Shrade account! </h3>
+	<div class="d-flex">
 	<%= form_for :user, url: {action: "create"} do |f| %>
 	<div class="form-group">
 		<%= f.label 'First Name' %>
 		<%= f.text_field :first_name, class:"form-control" %></br>
+	</div>
+	<div class="form-group">
 		<%= f.label 'Last Name' %>
 		<%= f.text_field :last_name, class:"form-control" %></br>
+	</div>
 		<%= f.label 'Email' %>
 		<%= f.text_field :email, class:"form-control" %></br>
 		<%= f.label 'Password' %>
@@ -27,4 +31,5 @@
 		<%= f.submit "Register Account", class:"btn btn-outline-dark mt-3" %>
 	</div>
 	<% end %>
+	</div>
 </div>
