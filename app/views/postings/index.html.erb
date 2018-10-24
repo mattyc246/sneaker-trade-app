@@ -1,1 +1,67 @@
-<h1>Posting Index Page</h1>
+
+<div class="container-fluid text-center">
+	<div class="d-flex">
+		<div id="filter-bar" class="text-body rounded shadow float-left h-100" style="width: 20%;">
+			<h4>Filters:</h4>
+			<div class="text-left">
+				<h6>Brand:</h6>
+				<div class="d-flex flex-wrap justify-content-center">
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Adidas</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Jordan</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Nike</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Puma</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Vans</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Yeezy</label>
+					</div>
+				</div>
+				<h6>Color:</h6>
+				<div class="d-flex flex-wrap justify-content-center">
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Black</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">White</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Red</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Blue</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Green</label>
+					</div>
+					<div class="form- m-1 form-check">
+					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+					  <label class="form-check-label" for="exampleCheck1">Brown</label>
+					</div>
+				</div>
+				<h6>Size:</h6>
+			</div>
+		</div>
+		<%= render partial: 'postings_cards' %>
+
+	</div>
+</div>
