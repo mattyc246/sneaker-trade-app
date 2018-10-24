@@ -35,7 +35,7 @@ class PostingsController < ApplicationController
 
 	def posting_params
 
-		params.require(:posting).permit(:title, :brand, :sneaker_type, :style, :size, :color, :condition, :expected_offer, :photos)
+		params.require(:posting).permit(:title, :brand, :sneaker_type, :style, :size, :color, :condition, :expected_offer, {photos: []})
 
 	end
 

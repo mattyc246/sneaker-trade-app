@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_042507) do
+ActiveRecord::Schema.define(version: 2018_10_24_093709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 2018_10_24_042507) do
     t.string "color"
     t.string "expected_offer"
     t.bigint "user_id"
-    t.string "photos"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "size"
     t.string "condition"
     t.string "sneaker_type"
+    t.json "photos"
     t.index ["user_id"], name: "index_postings_on_user_id"
   end
 
