@@ -1,0 +1,45 @@
+<div class="mx-auto w-50 m-2 p-5 border border-success rounded shadow-lg">
+	<h3> List your kicks for trade! </h3>
+	<div class="d-flex flex-column">
+		<%= form_for :posting, url: {action: "create"} do |f| %>
+		<div class="mx-auto">
+			<%= f.label 'Title' %>
+			<%= f.text_field :title, class:"form-control" %>
+		</div>
+		<div class="d-inline-flex">
+			<div class="form-group pr-2">
+				<%= f.label 'Brand' %>
+				<%= f.text_field :brand, class:"form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Style' %>
+				<%= f.text_field :style, class:"form-control" %>
+			</div>
+		</div>
+		<div class="d-inline-flex">
+			<div class="form-group pr-2">
+				<%= f.label 'Type' %>
+				<%= f.text_field :type, class:"form-control" %>
+			</div>
+			<div class="form-group pr-2">
+				<%= f.label 'Condition' %>
+				<%= f.select :size, grouped_options_for_select(Posting.condition), {}, class:"form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label 'Size' %>
+				<%= f.select :size, grouped_options_for_select(Posting.size_list), {}, class:"form-control" %>
+			</div>
+		</div>
+		<div class="mx-auto">
+			<%= f.label 'Expected Offer' %>
+			<%= f.text_area :expected_offer, class:"form-control" %>
+		</div>
+		<div class="mx-auto">
+			<%= f.label 'Product Photos' %></br>
+			<%= f.file_field :photos, multiple: true, class:'ml-5' %>
+		</div>
+		<%= f.submit "Post them kicks!", class:"btn btn-outline-dark mt-3" %>
+	</div>
+	<% end %>
+	</div>
+</div>

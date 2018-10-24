@@ -4,6 +4,10 @@ class PostingsController < ApplicationController
 
 	end
 
+	def create
+
+	end
+
 
 	private
 
