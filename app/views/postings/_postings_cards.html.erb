@@ -17,38 +17,8 @@
 	        <li class="list-group-item text-body">Condition: <%= post.condition %> / 10</li>
 	        <li class="list-group-item text-body">Size: <%= post.size %></li>
 	      </ul>
+	      <%= link_to 'Offer Trade', new_posting_trades_path(post.id), class:"btn btn-outline-success" %>
 		</div>
 		<% end %>
-		<div class="card m-2" style="width: 16rem;">
-			<%= image_tag 'placard.svg', class:'card-img-top' %>		  
-			<div class="card-body">
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-		<div class="card m-2" style="width: 16rem;">
-			<%= image_tag 'placard.svg', class:'card-img-top' %>
-			<div class="card-body">
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-		<div class="card m-2" style="width: 16rem;">
-			<%= image_tag 'placard.svg', class:'card-img-top' %>
-			<div class="card-body">
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-		<div class="card m-2" style="width: 16rem;">
-			<%= image_tag 'placard.svg', class:'card-img-top' %>
-			<div class="card-body">
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-		<div class="card m-2" style="width: 16rem;">
-			<%= image_tag 'placard.svg', class:'card-img-top' %>
-			<div class="card-body">
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-
 	</div>
 </div>
