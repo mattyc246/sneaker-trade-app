@@ -4,6 +4,12 @@ class PostingsController < ApplicationController
 
 	end
 
+	def index
+
+		@postings = Posting.all
+
+	end
+
 	def create
 
 		posting = Posting.new(posting_params)
