@@ -16,7 +16,10 @@
       <ul class="nav justify-content-end">
         <% if current_user %>
           <li class="nav-item">
-            <%= link_to 'Sign Out', sign_out_path %>
+            <%= link_to 'Post Some Kicks', new_posting_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign Out', sign_out_path, class:"nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">
