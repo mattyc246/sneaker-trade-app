@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_24_025955) do
+ActiveRecord::Schema.define(version: 2018_10_24_042507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2018_10_24_025955) do
   create_table "postings", force: :cascade do |t|
     t.string "title"
     t.string "brand"
-    t.string "type"
     t.string "style"
     t.string "color"
     t.string "expected_offer"
@@ -28,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_10_24_025955) do
     t.datetime "updated_at", null: false
     t.string "size"
     t.string "condition"
+    t.string "sneaker_type"
     t.index ["user_id"], name: "index_postings_on_user_id"
   end
 
