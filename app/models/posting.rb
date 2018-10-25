@@ -1,4 +1,5 @@
 class Posting < ApplicationRecord
+
 	mount_uploaders :photos, PhotoUploader
 	validates :brand, presence: true
 	validates :style, presence: true
