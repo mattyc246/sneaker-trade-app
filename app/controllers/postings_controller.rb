@@ -6,7 +6,15 @@ class PostingsController < ApplicationController
 
 	def index
 
-		@postings = Posting.all
+		if params[:search]
+
+			@postings = Posting.search_title(params[:search])
+
+		else
+
+			@postings = Posting.all
+
+		end
 
 	end
 
