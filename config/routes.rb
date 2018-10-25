@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   get '/sign_in' => 'users#sign_in', as: 'sign_in'
   post '/sign_in' => 'users#login', as: 'login' 
   get '/sign_out' => 'users#sign_out', as: 'sign_out' 
-  
+
+  delete '/users/:id/delete' => 'users#destroy', as: 'user_delete' 
   resources :users
 
-  post '/search' => 'postings#index', as: 'posting_search'
+  post '/postings' => 'postings#index', as: 'posting_search'
   
   resources :postings do
   	resource :trades
