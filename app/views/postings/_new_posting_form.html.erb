@@ -1,7 +1,7 @@
 <div class="mx-auto w-50 m-2 p-5 border border-success rounded shadow-lg">
 	<h3> List your kicks for trade! </h3>
 	<div class="d-flex flex-column">
-		<%= form_for :posting, url: {action: "create"} do |f| %>
+		<%= form_for :posting, url: postings_path, action: :post do |f| %>
 		<div class="mx-auto">
 			<%= f.label 'Title' %>
 			<%= f.text_field :title, class:"form-control" %>
