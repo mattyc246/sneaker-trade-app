@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
 
   post '/postings' => 'postings#index', as: 'posting_search'
+  delete '/postings/:id/delete' => 'postings#destroy', as: 'posting_delete'
   patch '/postings/:id/update' => 'postings#update', as: 'posting_update'
 
   resources :postings do
