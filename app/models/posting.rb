@@ -1,5 +1,6 @@
 class Posting < ApplicationRecord
 
+	include PgSearch
 	mount_uploaders :photos, PhotoUploader
 	validates :brand, presence: true
 	validates :style, presence: true
@@ -8,6 +9,9 @@ class Posting < ApplicationRecord
 	validates :size, presence: true
 	validates :condition, presence: true
 	validates :sneaker_type, presence: true
+	pg_search_scope :search_title,
+                    :against => :title,
+                    :using => {:tsearch => {:prefix => true}}
 
 	def self.size_list
 
