@@ -22,7 +22,11 @@
 	      <li class="list-group-item bg-dark">Trades Made: <%= @user.trades.count %></li>
 	      <li class="list-group-item bg-dark">Items Posted: <%= @user.postings.count %></li>
 	    </ul>
+		<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">Edit Profile</button>
 	    <a href="/users/<%= @user.id %>/delete" class="btn btn-outline-danger" data-confirm="Are you sure you wish to remove your account? This cannot be reversed!">Delete Account</a>
 	  </div>
 	</div>
 </div>
+
+
+<%= render partial: 'edit_modal' %>
