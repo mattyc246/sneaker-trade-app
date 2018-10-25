@@ -1,12 +1,23 @@
 <div class="container text-center">
 	<div class="vertical-center">
-	  <div class="mx-auto w-75 p-5 border border-success rounded shadow-lg">
+	  <div class="mx-auto w-75 m-3 p-5 border border-success rounded shadow-lg">
 
 		<div class="card text-center">
 		  <div class="card-header bg-secondary">
 		   	<%= @posting.title %>
 		  </div>
 		  <div class="card-body bg-dark">
+		  	<div class="w-100 m-3">	
+		  		<img src="<%= @posting.photos_urls.first %>" style="width: 50%;">
+		  	</div>
+		  	<hr>
+		  	<nav class="nav nav-pills nav-justified">
+		  	  <a class="nav-item nav-link">Brand: <%= @posting.brand %></a>
+		  	  <a class="nav-item nav-link">Type: <%= @posting.sneaker_type %></a>
+		  	  <a class="nav-item nav-link">Size: <%= @posting.size %></a>
+		  	  <a class="nav-item nav-link">Condition: <%= @posting.condition %> / 10</a>
+		  	</nav>
+		  	<hr>
 		    <h5 class="card-title">Expected Offer:</h5>
 		    <p class="card-text"><%= @posting.expected_offer %></p>
 		  </div>
