@@ -1,0 +1,57 @@
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Posting Details</h5>
+      </div>
+      <div class="modal-body">
+      	<div class="mx-auto">
+      		<div class="d-flex flex-column">
+      			<%= form_for :posting, url: posting_update_path, method: :patch do |f| %>
+      			<div class="mx-auto">
+      				<%= f.label 'Title' %>
+      				<%= f.text_field :title, class:"form-control" %>
+      			</div>
+      			<div class="d-inline-flex">
+      				<div class="form-group pr-2">
+      					<%= f.label 'Brand' %>
+      					<%= f.text_field :brand, class:"form-control" %>
+      				</div>
+      				<div class="form-group pr-2">
+      					<%= f.label 'Style' %>
+      					<%= f.text_field :style, class:"form-control" %>
+      				</div>
+      				<div class="form-group">
+      					<%= f.label 'Color' %>
+      					<%= f.text_field :color, class:"form-control" %>
+      				</div>
+      			</div>
+      			<div class="d-inline-flex">
+      				<div class="form-group pr-2">
+      					<%= f.label 'Type' %>
+      					<%= f.text_field :sneaker_type, class:"form-control" %>
+      				</div>
+      				<div class="form-group pr-2">
+      					<%= f.label 'Condition' %>
+      					<%= f.select :condition, grouped_options_for_select(Posting.condition), {}, class:"form-control" %>
+      				</div>
+      				<div class="form-group">
+      					<%= f.label 'Size' %>
+      					<%= f.select :size, grouped_options_for_select(Posting.size_list), {}, class:"form-control" %>
+      				</div>
+      			</div>
+      			<div class="mx-auto">
+      				<%= f.label 'Expected Offer' %>
+      				<%= f.text_area :expected_offer, class:"form-control" %>
+      			</div>
+      		</div>
+      		</div>
+      	</div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+        <%= f.submit "Commit Changes", class:"btn btn-outline-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   resources :users
 
   post '/postings' => 'postings#index', as: 'posting_search'
-  
+  patch '/postings/:id/update' => 'postings#update', as: 'posting_update'
+
   resources :postings do
   	resource :trades
   end

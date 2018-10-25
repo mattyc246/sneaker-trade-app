@@ -1,5 +1,4 @@
 <div class="container">
-	<h1><%= @posting.title %></h1>
 	<div class="card mx-auto bg-dark shadow-lg m-2" style="width: 70%;">
 	  <% if @posting.photos? %>
 	 
@@ -7,7 +6,7 @@
 	  	<%= image_tag 'profile-photo-fallback.png', class:"card-img-top w-50 mx-auto" %>
 	  <% end %>
 	  <div class="card-body text-center">
-	    <h1 class="card-title">Trade by: <%= @posting.user.first_name %> <%= @posting.user.last_name %></h1>
+	    <h1 class="card-title"><%= @posting.title %></h1>
 	    <ul class="list-group list-group-flush m-3">
 	      <li class="list-group-item bg-dark">Brand: <%= @posting.brand %></li>
 	      <li class="list-group-item bg-dark">Style: <%= @posting.style %></li>
@@ -21,9 +20,16 @@
 	      	
 	      </li>
 	      <li class="list-group-item bg-dark">Post Date: <%= @posting.created_at.to_date %></li>
+	      <li class="list-group-item bg-dark">Trade by: <%= @posting.user.first_name %> <%= @posting.user.last_name %></li>
 	    </ul>
-		<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">Edit Listing</button>
-	    <a href="/postings/<%= @posting.id %>/delete" class="btn btn-outline-danger" data-confirm="Are you sure you wish to remove this listing? This cannot be reversed!">Delete Listing</a>
+	    <% if current_user.id == @posting.user.id %>
+			<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">Edit Listing</button>
+		    <a href="/postings/<%= @posting.id %>/delete" class="btn btn-outline-danger" data-confirm="Are you sure you wish to remove this listing? This cannot be reversed!">Delete Listing</a>
+		<% else %>
+			<a href="/postings/<%= @posting.id %>/trades/new" class="btn btn-outline-success">Make A Trade Offer!</a>
+		<% end %>
 	  </div>
 	</div>
 </div>
+
+<%= render partial: 'edit_modal' %>
