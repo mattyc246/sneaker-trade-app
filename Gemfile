@@ -42,6 +42,9 @@ gem 'bootstrap', '~> 4.1.3'
 # jQuery For Rails
 gem 'jquery-rails'
 
+# Simple Search & Multi-Search Gem
+gem 'pg_search'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

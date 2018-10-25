@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   
   resources :users
 
+  post '/search' => 'postings#index', as: 'posting_search'
+  
   resources :postings do
   	resource :trades
   end
