@@ -28,6 +28,20 @@ class UsersController < ApplicationController
 
 	def update
 
+		user = User.find(params[:id])
+
+		if user.update(user_params)
+
+			flash[:notice] = "Successully updated details!"
+			redirect_to user_path(user.id)
+
+		else
+
+			flash[:notice] = "Check the details you have provided are correct! Otherwise please contact the administrator!"
+			redirect_to root_path
+
+		end
+
 	end
 
 	def destroy

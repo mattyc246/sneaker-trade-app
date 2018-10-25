@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <div class="d-flex flex-column">
-          <%= form_for :user, url: {action: "update"} do |f| %>
+          <%= form_for :user, url: user_update_path, method: :patch do |f| %>
           <div class="d-inline-flex">
             <div class="form-group pr-2">
               <%= f.label 'First Name' %>

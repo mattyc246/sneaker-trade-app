@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post '/sign_in' => 'users#login', as: 'login' 
   get '/sign_out' => 'users#sign_out', as: 'sign_out' 
 
-  delete '/users/:id/delete' => 'users#destroy', as: 'user_delete' 
+  delete '/users/:id/delete' => 'users#destroy', as: 'user_delete'
+  patch '/users/:id/update' => 'users#update', as: 'user_update'
+  
   resources :users
 
   post '/postings' => 'postings#index', as: 'posting_search'
