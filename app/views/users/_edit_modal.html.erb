@@ -1,0 +1,62 @@
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Profile Details</h5>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column">
+          <%= form_for :user, url: {action: "update"} do |f| %>
+          <div class="d-inline-flex">
+            <div class="form-group pr-2">
+              <%= f.label 'First Name' %>
+              <%= f.text_field :first_name, class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label 'Last Name' %>
+              <%= f.text_field :last_name, class:"form-control" %>
+            </div>
+          </div>
+          <div class="mx-auto">
+            <%= f.label 'Email' %>
+            <%= f.text_field :email, class:"form-control" %>
+          </div>
+          <div class="mx-auto">
+            <%= f.label 'Address' %>
+            <%= f.text_field :address, class:"form-control" %>
+          </div>
+          <div class="d-inline-flex">
+            <div class="form-group pr-2">
+              <%= f.label 'City' %>
+              <%= f.text_field :city, class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label 'State' %>
+              <%= f.text_field :state, class:"form-control" %>
+            </div>
+          </div>
+          <div class="mx-auto">
+            <%= f.label 'Country' %>
+            <%= f.select :country, grouped_options_for_select(User.country_list), {}, class:"form-control" %>
+          </div>
+          <div class="d-inline-flex">
+            <div class="form-group pr-2">
+              <%= f.label 'Postcode' %>
+              <%= f.text_field :postcode, class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label 'Phone Number' %>
+              <%= f.text_field :phone_number, class:"form-control" %>
+            </div>
+          </div>
+        </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+          <%= f.submit "Commit Changes", class:"btn btn-outline-success" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
