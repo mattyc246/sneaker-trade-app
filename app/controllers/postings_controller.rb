@@ -44,6 +44,42 @@ class PostingsController < ApplicationController
 
 	end
 
+	def destroy
+
+		posting = Posting.find(params[:id])
+
+		if posting.destroy
+
+			flash[:notice] = "You have successfully removed the post!"
+			redirect_to user_path(current_user.id)
+
+		else
+
+			flash[:notice] = "It is not possible to remove the listing! If problems persist, contact the administrator!"
+			redirect_to posting_path(posting.id)
+
+		end
+
+	end
+
+	def update
+
+		posting = Posting.find(params[:id])
+
+		if posting.update(posting_params)
+
+			flash[:notice] = "You have successfully updated your post!"
+			redirect_to posting_path(posting.id)
+
+		else
+
+			flash[:notice] = "Unable to update the post! Please check the details and try again!"
+			redirect_to posting_path(posting.id)
+
+		end
+
+	end
+
 
 	private
 
