@@ -4,4 +4,10 @@ class Trade < ApplicationRecord
 
 	validates :offer, presence: true
 	validates :offer_status, presence: true
+
+	def self.set_status
+
+		self.offer_status = "Pending"
+
+	end
 end
