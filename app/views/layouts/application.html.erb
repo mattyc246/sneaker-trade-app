@@ -42,6 +42,23 @@
         <% end %>
       </ul>
     </nav>
+    <% flash.each do |key, value| %>
+            <div class="alert alert-dark" role="alert">
+              <%= value %>
+            </div>
+          <% end %>
     <%= yield %>
+    <script>
+      $(document).ready(function(){
+
+        setInterval(function(){
+
+          $('.alert').slideUp(500);
+          
+        }, 5000)
+
+        
+      })
+    </script>
   </body>
 </html>

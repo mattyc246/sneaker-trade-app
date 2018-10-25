@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 		else
 
 			flash[:notice] = "Check the details you have provided are correct! Otherwise please contact the administrator!"
-			redirect_to root_path
+			redirect_to user_path(user.id)
 
 		end
 
