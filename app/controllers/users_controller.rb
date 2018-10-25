@@ -10,10 +10,12 @@ class UsersController < ApplicationController
 
 		if user.save
 
+			flash[:notice] = "You have succesfully created your account! Sign in to get started!"
 			redirect_to root_path
 
 		else
 
+			flash[:notice] = "Details are incorrect or email is already in use! Please try again!"
 			redirect_to sign_up_path
 
 		end
