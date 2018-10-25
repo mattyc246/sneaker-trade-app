@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   
   resources :users
 
-  post '/postings' => 'postings#index', as: 'posting_search'
+  get '/post_search' => 'postings#index', as: 'posting_search'
+  post '/post_search' => 'postings#index', as: 'new_posting_search'
   get '/postings/:id/delete' => 'postings#destroy', as: 'posting_delete'
   patch '/postings/:id/update' => 'postings#update', as: 'posting_update'
 
