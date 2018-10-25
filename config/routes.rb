@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/postings/:id/delete' => 'postings#destroy', as: 'posting_delete'
   patch '/postings/:id/update' => 'postings#update', as: 'posting_update'
 
+  get '/trades/view_all' => 'trades#view_all', as: 'user_trades'
+  
   resources :postings do
   	resource :trades
   end
