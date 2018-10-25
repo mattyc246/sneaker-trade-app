@@ -2,6 +2,7 @@ class Posting < ApplicationRecord
 
 	include PgSearch
 	mount_uploaders :photos, PhotoUploader
+	has_many :trades
 	validates :brand, presence: true
 	validates :style, presence: true
 	validates :color, presence: true
