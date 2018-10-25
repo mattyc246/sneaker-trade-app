@@ -1,0 +1,28 @@
+
+<div class="container">
+	<div class="card mx-auto bg-dark shadow-lg" style="width: 70%;">
+	  <% if @user.photo? %>
+	  	<img class="card-img-top" src="<%= @user.photo_url %>" alt="Card image cap">
+	  <% else %>
+	  	<%= image_tag 'profile-photo-fallback.png', class:"card-img-top w-50 mx-auto" %>
+	  <% end %>
+	  <div class="card-body text-center">
+	    <h1 class="card-title"><%= @user.first_name %> <%= @user.last_name %>'s Profile</h1>
+	    <ul class="list-group list-group-flush m-3">
+	      <li class="list-group-item bg-dark">Email: <%= @user.email %></li>
+	      <li class="list-group-item bg-dark">Phone: <%= @user.phone_number %></li>
+	      <li class="list-group-item bg-dark">
+	      	Address:</br> 
+	      	<%= @user.address %></br>
+	      	<%= @user.city %></br>
+	      	<%= @user.state %></br>
+	      	<%= @user.postcode %></br>
+	      	<%= @user.country %>
+	      </li>
+	      <li class="list-group-item bg-dark">Trades Made: <%= @user.trades.count %></li>
+	      <li class="list-group-item bg-dark">Items Posted: <%= @user.postings.count %></li>
+	    </ul>
+	    <a href="#" class="btn btn-outline-danger">Delete Account</a>
+	  </div>
+	</div>
+</div>
