@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="card mx-auto bg-dark shadow-lg m-2" style="width: 70%;">
 	  <% if @user.photo? %>
-	  	<img class="card-img-top" src="<%= @user.photo_url %>" alt="Card image cap">
+	  	<img class="card-img-top w-50 rounded-circle mx-auto m-3" src="<%= @user.photo_url %>" alt="Card image cap">
 	  <% else %>
 	  	<%= image_tag 'profile-photo-fallback.png', class:"card-img-top w-50 mx-auto" %>
 	  <% end %>
