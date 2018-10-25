@@ -32,7 +32,7 @@ class TradesController < ApplicationController
 
 	def show
 
-		@trades = Trade.where(user_id: current_user.id)
+		@trades = Trade.where(posting_id: params[:posting_id])
 
 	end
 
