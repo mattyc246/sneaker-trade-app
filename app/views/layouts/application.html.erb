@@ -24,6 +24,9 @@
           <li class="nav-item">
             <%= link_to 'Sign Out', sign_out_path, class:"nav-link" %>
           </li>
+          <li class="nav-item">
+            <%= image_tag 'profile-photo-fallback.png', width: 50, height: 50 %>
+          </li>
         <% else %>
           <li class="nav-item">
             <%= link_to 'Register Account', sign_up_path, class:"nav-link" %>

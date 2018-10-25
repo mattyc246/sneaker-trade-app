@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   get '/sign_out' => 'users#sign_out', as: 'sign_out' 
   
   resources :users
-
-  post '/search' => 'postings#index', as: 'posting_search'
   
   resources :postings do
   	resource :trades
