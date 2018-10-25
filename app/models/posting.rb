@@ -1,5 +1,12 @@
 class Posting < ApplicationRecord
 	mount_uploaders :photos, PhotoUploader
+	validates :brand, presence: true
+	validates :style, presence: true
+	validates :color, presence: true
+	validates :expected_offer, presence: true
+	validates :size, presence: true
+	validates :condition, presence: true
+	validates :sneaker_type, presence: true
 
 	def self.size_list
 
