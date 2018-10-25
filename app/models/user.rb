@@ -15,8 +15,8 @@ class User < ApplicationRecord
 	validates :country, presence: true, on: :create
 	validates :phone_number, presence: true, on: :create
 
-	has_many :postings
-	has_many :trades
+	has_many :postings, dependent: :destroy
+	has_many :trades, dependent: :destroy
 
 	def self.authenticate(check_password)
 
