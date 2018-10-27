@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 	  end
 
 	  def superadmin?
-	  	current_user.user_level == "superadmin"
+	  	@current_user.user_level == 'superadmin'
 	  end
 	
 

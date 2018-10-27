@@ -66,7 +66,7 @@ class TradesController < ApplicationController
 
 			trade = Trade.find(params[:trade_id])
 
-			if current_user.superadmin? || current_user.id == trade.user_id
+			if superadmin? || current_user.id == trade.user_id
 
 				if trade.destroy
 
@@ -122,7 +122,7 @@ class TradesController < ApplicationController
 
 			trade = Trade.find(params[:trade_id])
 
-			if current_user.id == trade.user_id || current_user.superadmin?
+			if current_user.id == trade.user_id || superadmin?
 
 				if trade.offer_status == 'pending'
 
@@ -161,7 +161,7 @@ class TradesController < ApplicationController
 
 			trade = Trade.find(params[:trade_id])
 
-			if current_user.id == trade.user_id || current_user.superadmin?
+			if current_user.id == trade.user_id || superadmin?
 
 				if trade.offer_status == 'pending'
 
@@ -179,6 +179,12 @@ class TradesController < ApplicationController
 					flash[:danger] = "This trade has already been accepted!"
 
 				end
+
+			else
+
+				flash[:danger] = "You are not authorized to do that!"
+
+			end
 
 		else
 

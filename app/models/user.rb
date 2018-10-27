@@ -72,6 +72,12 @@ class User < ApplicationRecord
 
 	end
 
+	def self.superadmin?
+
+		current_user.user_level == 'superadmin'
+
+	end
+
 	private
 
 	def set_user_level

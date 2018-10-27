@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
 			user = User.find(params[:id])
 
-			if current_user.id == user.id || current_user.superadmin?
+			if current_user.id == user.id || superadmin?
 
 				if user.update(user_params)
 
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
 			user = User.find(params[:id])
 
-			if current_user.id == user.id || current_user.superadmin?
+			if current_user.id == user.id || superadmin?
 
 				if user.destroy
 

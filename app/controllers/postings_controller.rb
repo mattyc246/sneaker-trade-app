@@ -66,7 +66,7 @@ class PostingsController < ApplicationController
 
 			posting = Posting.find(params[:id])
 
-			if current_user.id == posting.user_id || current_user.superadmin?
+			if current_user.id == posting.user_id || superadmin?
 
 				if posting.destroy
 
@@ -101,7 +101,7 @@ class PostingsController < ApplicationController
 
 			posting = Posting.find(params[:id])
 
-			if current_user.id == posting.user_id || current_user.superadmin?
+			if current_user.id == posting.user_id || superadmin?
 
 				if posting.update(posting_params)
 
