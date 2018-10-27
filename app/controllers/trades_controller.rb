@@ -2,34 +2,59 @@ class TradesController < ApplicationController
 
 	def new
 
-		@posting = Posting.find(params[:posting_id])
+		if logged_in?
+
+			@posting = Posting.find(params[:posting_id])
+
+		else
+
+			redirect_to sign_in_path
+
+		end
 
 	end	
 
 	def create
 
-		posting = Posting.find(params[:posting_id])
+		if logged_in?
 
-		trade = Trade.new(trade_params)
+			posting = Posting.find(params[:posting_id])
 
-		trade.user_id = current_user.id
+			if current_user.id != posting.user.id
 
-		trade.posting_id = posting.id
+				trade = Trade.new(trade_params)
 
-		if trade.save
+				trade.user_id = current_user.id
 
-			flash[:success] = "You have successfully made an offer on #{posting.title}"
-			Twilio::REST::Client.new.messages.create({
-			from: ENV['twilio_phone_number'],
-			to: '+60176068669',
-			body: "Someone has made an offer on your '#{posting.title}'. To view now, go to: "
-			})
-			redirect_to user_trades_path
+				trade.posting_id = posting.id
+
+				if trade.save
+
+					flash[:success] = "You have successfully made an offer on #{posting.title}"
+					Twilio::REST::Client.new.messages.create({
+					from: ENV['twilio_phone_number'],
+					to: '+60176068669',
+					body: "Someone has made an offer on your '#{posting.title}'. To view now, go to: "
+					})
+					redirect_to user_trades_path
+
+				else
+
+					flash[:danger] = "Unable to make a trade offer! If problems persist contact the administrator!"
+					redirect_to new_posting_trades_path(posting.id)
+
+				end
+
+			else
+
+				flash[:danger] = "You can't trade with yourself!"
+				redirect_to new_posting_trades_path(posting.id)
+
+			end
 
 		else
 
-			flash[:danger] = "Unable to make a trade offer! If problems persist contact the administrator!"
-			redirect_to new_posting_trades_path(posting.id)
+			redirect_to sign_in_path
 
 		end
 
@@ -37,17 +62,34 @@ class TradesController < ApplicationController
 
 	def destroy
 
-		trade = Trade.find(params[:trade_id])
+		if logged_in?
 
-		if trade.destroy
+			trade = Trade.find(params[:trade_id])
 
-			flash[:success] = "You have succesfully retracted your offer!"
-			redirect_to user_trades_path
+			if superadmin? || current_user.id == trade.user_id
+
+				if trade.destroy
+
+					flash[:success] = "You have successfully retracted your offer!"
+					redirect_to user_trades_path
+
+				else
+
+					flash[:danger] = "Unable to retract offer! If problems persist, contact administrator!"
+					redirect_to user_trades_path
+
+				end
+
+			else
+
+				flash[:danger] = "You are not authorized to do that!"
+				redirect_to user_trades_path
+
+			end
 
 		else
 
-			flash[:danger] = "Unable to retract offer! If problems persist, contact administrator!"
-			redirect_to user_trades_path
+			redirect_to sign_in_path
 
 		end
 
@@ -61,29 +103,53 @@ class TradesController < ApplicationController
 
 	def view_all
 
-		@trades = Trade.where(user_id: current_user.id)
-		@postings = Posting.where(user_id: current_user.id)
+		if logged_in?
+
+			@trades = Trade.where(user_id: current_user.id)
+			@postings = Posting.where(user_id: current_user.id)
+
+		else
+
+			redirect_to sign_in_path
+
+		end
 
 	end
 
 	def accept_trade
 
-		trade = Trade.find(params[:trade_id])
+		if logged_in?
 
-		if trade.offer_status == 'pending'
+			trade = Trade.find(params[:trade_id])
 
-			trade.accept
-			flash[:success] = "You have accepted the offer! Congratulations!"
-			Twilio::REST::Client.new.messages.create({
-			from: ENV['twilio_phone_number'],
-			to: '+60176068669',
-			body: "#{current_user.first_name} has accepted your offer for #{trade.posting.title}! You can now arrange with the buyer to make the trade!"
-			})
-			render :json => {newStatus: trade.offer_status}
+			if current_user.id == trade.user_id || superadmin?
+
+				if trade.offer_status == 'pending'
+
+					trade.accept
+					flash[:success] = "You have accepted the offer! Congratulations!"
+					Twilio::REST::Client.new.messages.create({
+					from: ENV['twilio_phone_number'],
+					to: '+60176068669',
+					body: "#{current_user.first_name} has accepted your offer for #{trade.posting.title}! You can now arrange with the buyer to make the trade!"
+					})
+					render :json => {newStatus: trade.offer_status}
+
+				else
+
+					flash[:danger] = "This trade has already been accepted!"
+
+				end
+
+			else
+
+				flash[:danger] = "You are not authorized to do this!"
+
+			end
 
 		else
 
-			flash[:danger] = "This trade has already been accepted!"
+			redirect_to sign_in_path
 
 		end
 
@@ -91,22 +157,38 @@ class TradesController < ApplicationController
 
 	def decline_trade
 
-		trade = Trade.find(params[:trade_id])
+		if logged_in?
 
-		if trade.offer_status == 'pending'
+			trade = Trade.find(params[:trade_id])
 
-			trade.decline
-			flash[:success] = "You have declined the offer!"
-			Twilio::REST::Client.new.messages.create({
-			from: ENV['twilio_phone_number'],
-			to: '+60176068669',
-			body: "#{current_user.first_name} has declined your offer for #{trade.posting.title}! Make another offer!"
-			})
-			render :json => {newStatus: trade.offer_status}
+			if current_user.id == trade.user_id || superadmin?
+
+				if trade.offer_status == 'pending'
+
+					trade.decline
+					flash[:success] = "You have declined the offer!"
+					Twilio::REST::Client.new.messages.create({
+					from: ENV['twilio_phone_number'],
+					to: '+60176068669',
+					body: "#{current_user.first_name} has declined your offer for #{trade.posting.title}! Make another offer!"
+					})
+					render :json => {newStatus: trade.offer_status}
+
+				else
+
+					flash[:danger] = "This trade has already been accepted!"
+
+				end
+
+			else
+
+				flash[:danger] = "You are not authorized to do that!"
+
+			end
 
 		else
 
-			flash[:danger] = "This trade has already been accepted!"
+			redirect_to sign_in_path
 
 		end
 

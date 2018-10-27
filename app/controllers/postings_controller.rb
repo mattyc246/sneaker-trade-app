@@ -2,6 +2,14 @@ class PostingsController < ApplicationController
 
 	def new
 
+		if logged_in?
+
+		else
+
+			redirect_to sign_in_path
+
+		end
+
 	end
 
 	def show
@@ -26,19 +34,27 @@ class PostingsController < ApplicationController
 
 	def create
 
-		posting = Posting.new(posting_params)
+		if logged_in?
 
-		posting.user_id = current_user.id
+			posting = Posting.new(posting_params)
 
-		if posting.save
+			posting.user_id = current_user.id
 
-			flash[:success] = 'You have succesfully posted some kicks for trade!'
-			redirect_to postings_path
+			if posting.save
+
+				flash[:success] = 'You have succesfully posted some kicks for trade!'
+				redirect_to postings_path
+
+			else
+
+				flash[:danger] = 'Check all details have been filled out correctly! If problems persist, please notify the admin!'
+				redirect_to new_posting_path
+
+			end
 
 		else
 
-			flash[:danger] = 'Check all details have been filled out correctly! If problems persist, please notify the admin!'
-			redirect_to new_posting_path
+			redirect_to sign_in_path
 
 		end
 
@@ -46,17 +62,34 @@ class PostingsController < ApplicationController
 
 	def destroy
 
-		posting = Posting.find(params[:id])
+		if logged_in?
 
-		if posting.destroy
+			posting = Posting.find(params[:id])
 
-			flash[:success] = "You have successfully removed the post!"
-			redirect_to user_path(current_user.id)
+			if current_user.id == posting.user_id || superadmin?
+
+				if posting.destroy
+
+					flash[:success] = "You have successfully removed the post!"
+					redirect_to user_path(current_user.id)
+
+				else
+
+					flash[:danger] = "It is not possible to remove the listing! If problems persist, contact the administrator!"
+					redirect_to posting_path(posting.id)
+
+				end
+
+			else
+
+				flash[:danger] = "You are not authorized to do that!"
+				redirect_to posting_path(posting.id)
+
+			end
 
 		else
 
-			flash[:danger] = "It is not possible to remove the listing! If problems persist, contact the administrator!"
-			redirect_to posting_path(posting.id)
+			redirect_to sign_in_path
 
 		end
 
@@ -64,17 +97,34 @@ class PostingsController < ApplicationController
 
 	def update
 
-		posting = Posting.find(params[:id])
+		if logged_in?
 
-		if posting.update(posting_params)
+			posting = Posting.find(params[:id])
 
-			flash[:success] = "You have successfully updated your post!"
-			redirect_to posting_path(posting.id)
+			if current_user.id == posting.user_id || superadmin?
+
+				if posting.update(posting_params)
+
+					flash[:success] = "You have successfully updated your post!"
+					redirect_to posting_path(posting.id)
+
+				else
+
+					flash[:danger] = "Unable to update the post! Please check the details and try again!"
+					redirect_to posting_path(posting.id)
+
+				end
+
+			else
+
+				flash[:danger] = "You are not authorized to do that!"
+				redirect_to posting_path(posting.id)
+
+			end
 
 		else
 
-			flash[:danger] = "Unable to update the post! Please check the details and try again!"
-			redirect_to posting_path(posting.id)
+			redirect_to sign_in_path
 
 		end
 
