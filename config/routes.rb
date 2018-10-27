@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   get '/trades/view_all' => 'trades#view_all', as: 'user_trades'
   post '/trades/accept_trade' => 'trades#accept_trade', as: 'accept_trade'
-  post '/trades/decline_trade' => 'trades#decline_trade', as: 'accept_trade'
+  post '/trades/decline_trade' => 'trades#decline_trade', as: 'decline_trade'
   
   resources :postings do
   	resource :trades
