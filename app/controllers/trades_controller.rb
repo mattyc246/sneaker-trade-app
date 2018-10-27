@@ -68,6 +68,9 @@ class TradesController < ApplicationController
 
 	def accept_trade
 
+		
+
+
 	end
 
 	def decline_trade
