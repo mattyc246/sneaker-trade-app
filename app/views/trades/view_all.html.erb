@@ -13,3 +13,56 @@
 
 	</div>
 </div>
+
+<script>
+
+	$( document ).on('turbolinks:load', function() {
+	 	
+		$('.accept-btn').click(function(e){
+			
+			var tradeId = e.target.value
+			
+			$.ajax({
+				url: '/accept_trade',
+				method: 'POST',
+				data: {trade_id: tradeId},
+				dataType: 'JSON',
+				success: function(data){
+
+					$(`#status${tradeId}`).html(`Current Status: ${data.newStatus}`)
+					
+				},
+				error: function(){
+					alert('Oh No Something Went Wrong! :(');
+				}
+			})
+		})
+
+		$('.decline-btn').click(function(e){
+
+			var tradeId = e.target.value
+
+			$.ajax({
+				url: '/decline_trade',
+				method: 'POST',
+				data: {trade_id: tradeId},
+				dataType: 'JSON',
+				success: function(data){
+					
+					$(`#status${tradeId}`).html(`Current Status: ${data.newStatus}`)
+					
+				},
+				error: function(){
+					alert('Oh No Something Went Wrong! :(');
+				}
+			})
+
+		})
+
+		}) 
+
+
+
+	
+
+</script>

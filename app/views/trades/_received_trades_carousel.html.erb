@@ -12,8 +12,9 @@
           <h5 class="card-title">Trade Offered:</h5>
           <p class="card-text"><%= trade.offer %></p>
           <h5 class="card-title">Offer From: <%= trade.user.first_name %> <%= trade.user.last_name %></h5>
-          <a href="#" class="btn btn-outline-success">Accept Offer</a>
-          <a href="#" class="btn btn-outline-danger">Decline Offer</a>
+          <h6 id="status<%= trade.id %>" class="card-title">Current Status: <%= trade.offer_status %></h6>
+          <button value="<%= trade.id %>" class="accept-btn btn btn-outline-success">Accept Offer</button>
+          <button value="<%= trade.id %>" class="decline-btn btn btn-outline-danger">Decline Offer</button>
         </div>
         <div class="card-footer text-body bg-secondary">
           Trade Offered On: <%= trade.created_at.to_date %>
@@ -30,8 +31,9 @@
           <h5 class="card-title">Trade Offered:</h5>
           <p class="card-text"><%= trade.offer %></p>
           <h5 class="card-title">Offer From: <%= trade.user.first_name %> <%= trade.user.last_name %></h5>
-          <a href="#" class="btn btn-outline-success">Accept Offer</a>
-          <a href="#" class="btn btn-outline-danger">Decline Offer</a>
+          <h6 id="status<%= trade.id %>" class="card-title">Current Status: <%= trade.offer_status %></h6>
+          <button value="<%= trade.id %>" class="accept-btn btn btn-outline-success">Accept Offer</button>
+          <button value="<%= trade.id %>" class="decline-btn btn btn-outline-danger">Decline Offer</button>
         </div>
         <div class="card-footer text-body bg-secondary">
           Trade Offered On: <%= trade.created_at.to_date %>
