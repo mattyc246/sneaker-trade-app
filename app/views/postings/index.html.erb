@@ -117,11 +117,11 @@ $(document).on('turbolinks:load', function(){
 		var keyword = e.target.value
 
 		$.ajax({
-			url: '/filter_search',
+			url: '/keyword_search',
 			method: 'GET',
 			data: {search: keyword},
 			success: function(){
-				
+
 			},
 			error: function(){
 				console.log('Error!')
