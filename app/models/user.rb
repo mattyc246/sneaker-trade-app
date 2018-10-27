@@ -14,9 +14,12 @@ class User < ApplicationRecord
 	validates :postcode, presence: true, on: :create
 	validates :country, presence: true, on: :create
 	validates :phone_number, presence: true, on: :create
+	validates :auth_level, presence: true, on: :create
 
 	has_many :postings, dependent: :destroy
 	has_many :trades, dependent: :destroy
+
+	before_validate :set_user_level
 
 	def self.authenticate(check_password)
 
@@ -66,6 +69,14 @@ class User < ApplicationRecord
 			  "Virgin Islands, U.S.","Wallis and Futuna","Western Sahara","Yemen","Zambia","Zimbabwe"]
 
 		}
+
+	end
+
+	private
+
+	def set_user_level
+
+		self.auth_level = "basic"
 
 	end
 
