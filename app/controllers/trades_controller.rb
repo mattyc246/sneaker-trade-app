@@ -19,6 +19,11 @@ class TradesController < ApplicationController
 		if trade.save
 
 			flash[:notice] = "You have successfully made an offer on #{posting.title}"
+			Twilio::REST::Client.new.messages.create({
+			from: ENV['twilio_phone_number'],
+			to: '+60176068669',
+			body: "Someone has made an offer on your '#{posting.title}'. To view now, go to: "
+			})
 			redirect_to user_trades_path
 
 		else
