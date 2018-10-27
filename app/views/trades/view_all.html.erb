@@ -20,11 +20,37 @@
 	 	
 		$('.accept-btn').click(function(e){
 			console.log(e.target.value);
+
+			$.ajax({
+				url: 'trades/accept_trade',
+				method: 'POST',
+				data: {trade_id: '1'},
+				dataType: 'JSON',
+				success: function(){
+
+				},
+				error: function(){
+					alert('Oh No Something Went Wrong! :(');
+				}
+			})
 		})
 
 		$('.decline-btn').click(function(e){
 
 			console.log(e.target.value)
+
+			$.ajax({
+				url: 'trades/decline_trade',
+				method: 'POST',
+				data: {trade_id: '1'},
+				dataType: 'JSON',
+				success: function(){
+
+				},
+				error: function(){
+					alert('Oh No Something Went Wrong! :(');
+				}
+			})
 
 		})
 
