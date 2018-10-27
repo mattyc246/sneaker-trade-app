@@ -39,6 +39,7 @@ class TradesController < ApplicationController
 	def view_all
 
 		@trades = Trade.where(user_id: current_user.id)
+		@postings = Posting.where(user_id: current_user.id)
 
 	end
 
