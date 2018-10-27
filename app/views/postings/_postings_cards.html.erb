@@ -1,7 +1,7 @@
 
 		<% @postings.each do |post| %>
 		<div class="card m-2 bg-dark border border-white shadow" style="width: 16rem;">
-		  <%= image_tag 'placard.svg', class:'card-img-top' %>
+		  <img src="<%= post.photos_urls.sample %>" class="card-img-top3">
 		  <div class="card-body">
 		  	<h6 class="card-subtitle mb-2 text-light"><%= post.created_at.to_date %></h6>
 		  	<h5 class="card-title"><%= post.brand %></h5>
