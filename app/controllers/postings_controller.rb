@@ -32,12 +32,12 @@ class PostingsController < ApplicationController
 
 		if posting.save
 
-			flash[:notice] = 'You have succesfully posted some kicks for trade!'
+			flash[:success] = 'You have succesfully posted some kicks for trade!'
 			redirect_to postings_path
 
 		else
 
-			flash[:notice] = 'Check all details have been filled out correctly! If problems persist, please notify the admin!'
+			flash[:danger] = 'Check all details have been filled out correctly! If problems persist, please notify the admin!'
 			redirect_to new_posting_path
 
 		end
@@ -50,12 +50,12 @@ class PostingsController < ApplicationController
 
 		if posting.destroy
 
-			flash[:notice] = "You have successfully removed the post!"
+			flash[:success] = "You have successfully removed the post!"
 			redirect_to user_path(current_user.id)
 
 		else
 
-			flash[:notice] = "It is not possible to remove the listing! If problems persist, contact the administrator!"
+			flash[:danger] = "It is not possible to remove the listing! If problems persist, contact the administrator!"
 			redirect_to posting_path(posting.id)
 
 		end
@@ -68,12 +68,12 @@ class PostingsController < ApplicationController
 
 		if posting.update(posting_params)
 
-			flash[:notice] = "You have successfully updated your post!"
+			flash[:success] = "You have successfully updated your post!"
 			redirect_to posting_path(posting.id)
 
 		else
 
-			flash[:notice] = "Unable to update the post! Please check the details and try again!"
+			flash[:danger] = "Unable to update the post! Please check the details and try again!"
 			redirect_to posting_path(posting.id)
 
 		end
