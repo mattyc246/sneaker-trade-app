@@ -30,17 +30,34 @@ class UsersController < ApplicationController
 
 	def update
 
-		user = User.find(params[:id])
+		if logged_in?
 
-		if user.update(user_params)
+			user = User.find(params[:id])
 
-			flash[:success] = "Successully updated details!"
-			redirect_to user_path(user.id)
+			if current_user.id == user.id || current_user.superadmin?
+
+				if user.update(user_params)
+
+					flash[:success] = "Successully updated details!"
+					redirect_to user_path(user.id)
+
+				else
+
+					flash[:danger] = "Check the details you have provided are correct! Otherwise please contact the administrator!"
+					redirect_to user_path(user.id)
+
+				end
+
+			else
+
+				flash[:alert] = "You are not authorized to do that!"
+				redirect_to root_path
+
+			end
 
 		else
 
-			flash[:danger] = "Check the details you have provided are correct! Otherwise please contact the administrator!"
-			redirect_to user_path(user.id)
+			redirect_to sign_in_path
 
 		end
 
@@ -48,18 +65,35 @@ class UsersController < ApplicationController
 
 	def destroy
 
-		user = User.find(params[:id])
+		if logged_in?
 
-		if user.destroy
+			user = User.find(params[:id])
 
-			flash[:success] = "Your account was Successfully removed! We're sorry to see you go =("
-			session[:user_id] = nil
-			redirect_to root_path
+			if current_user.id == user.id || current_user.superadmin?
+
+				if user.destroy
+
+					flash[:success] = "Your account was Successfully removed! We're sorry to see you go =("
+					session[:user_id] = nil
+					redirect_to root_path
+
+				else
+
+					flash[:danger] = "Something went wrong! Check with the administrator if you have permission to do this!"
+					redirect_to user_path(user.id)
+
+				end
+
+			else
+
+				flash[:alert] = "You are not authorized to do that!"
+				redirect_to root_path
+
+			end
 
 		else
 
-			flash[:danger] = "Something went wrong! Check with the administrator if you have permission to do this!"
-			redirect_to user_path(user.id)
+			redirect_to sign_in_path
 
 		end
 
