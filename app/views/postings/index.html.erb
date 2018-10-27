@@ -81,9 +81,13 @@
 				</div>
 			</div>
 		</div>
-
-		<%= render partial: 'postings_cards' %>
-
+		<div id="posting-box" class="mx-auto p-2" style="width: 80%;">
+			<h2> Trades For Days... </h2>
+			<div id="post-cards" class="d-flex flex-wrap justify-content-center">
+				<%= render partial: 'postings_cards' %>
+			</div>
+		</div>
+		</div>
 	</div>
 </div>
 
@@ -119,13 +123,7 @@ $(document).on('turbolinks:load', function(){
 		$.ajax({
 			url: '/keyword_search',
 			method: 'GET',
-			data: {search: keyword},
-			success: function(){
-
-			},
-			error: function(){
-				console.log('Error!')
-			}
+			data: {search: keyword}
 
 		})
 

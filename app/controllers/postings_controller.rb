@@ -80,6 +80,18 @@ class PostingsController < ApplicationController
 
 	end
 
+	def keyword_search
+
+		@postings = Posting.search_title(params[:search])
+
+		respond_to do |format|
+
+			format.js { @postings }
+			format.html { render 'postings/index' }
+
+		end
+
+	end
 
 	private
 
