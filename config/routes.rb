@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post '/post_search' => 'postings#index', as: 'new_posting_search'
   get '/postings/:id/delete' => 'postings#destroy', as: 'posting_delete'
   patch '/postings/:id/update' => 'postings#update', as: 'posting_update'
+  get '/keyword_search' => 'postings#keyword_search', as: 'keyword_search'
 
   get '/trades/view_all' => 'trades#view_all', as: 'user_trades'
   post '/accept_trade' => 'trades#accept_trade', as: 'accept_trade'

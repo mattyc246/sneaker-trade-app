@@ -1,6 +1,4 @@
-<div id="posting-box" class="mx-auto p-2" style="width: 80%;">
-	<h2> Trades For Days... </h2>
-	<div class="d-flex flex-wrap justify-content-center">
+
 		<% @postings.each do |post| %>
 		<div class="card m-2 bg-dark border border-white shadow" style="width: 16rem;">
 		  <%= image_tag 'placard.svg', class:'card-img-top' %>
@@ -21,5 +19,3 @@
 	      <%= link_to 'Offer Trade', new_posting_trades_path(post.id), class:"btn btn-outline-success" %>
 		</div>
 		<% end %>
-	</div>
-</div>

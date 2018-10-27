@@ -1,67 +1,134 @@
 
 <div class="container-fluid text-center">
 	<div class="d-flex">
-		<div id="filter-bar" class="text-body rounded shadow float-left h-100" style="width: 20%;">
+		<div id="filter-bar" class="text-body rounded shadow float-left h-100 p-3" style="width: 20%;">
 			<h4>Filters:</h4>
+			<hr>
 			<div class="text-left">
 				<h6>Brand:</h6>
 				<div class="d-flex flex-wrap justify-content-center">
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Adidas</label>
+					  <input type="checkbox" class="form-check-input" id="brand-adidas">
+					  <label class="form-check-label" for="brand-adidas">Adidas</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Jordan</label>
+					  <input type="checkbox" class="form-check-input" id="brand-jordan">
+					  <label class="form-check-label" for="brand-jordan">Jordan</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Nike</label>
+					  <input type="checkbox" class="form-check-input" id="brand-nike">
+					  <label class="form-check-label" for="brand-nike">Nike</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Puma</label>
+					  <input type="checkbox" class="form-check-input" id="brand-puma">
+					  <label class="form-check-label" for="brand-puma">Puma</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Vans</label>
+					  <input type="checkbox" class="form-check-input" id="brand-vans">
+					  <label class="form-check-label" for="brand-vans">Vans</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Yeezy</label>
+					  <input type="checkbox" class="form-check-input" id="brand-yeezy">
+					  <label class="form-check-label" for="brand-yeezy">Yeezy</label>
 					</div>
 				</div>
+				<hr>
 				<h6>Color:</h6>
 				<div class="d-flex flex-wrap justify-content-center">
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Black</label>
+					  <input type="checkbox" class="form-check-input" id="color-black">
+					  <label class="form-check-label" for="color-black">Black</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">White</label>
+					  <input type="checkbox" class="form-check-input" id="color-white">
+					  <label class="form-check-label" for="color-white">White</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Red</label>
+					  <input type="checkbox" class="form-check-input" id="color-red">
+					  <label class="form-check-label" for="color-red">Red</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Blue</label>
+					  <input type="checkbox" class="form-check-input" id="color-blue">
+					  <label class="form-check-label" for="color-blue">Blue</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Green</label>
+					  <input type="checkbox" class="form-check-input" id="color-green">
+					  <label class="form-check-label" for="color-green">Green</label>
 					</div>
 					<div class="form- m-1 form-check">
-					  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-					  <label class="form-check-label" for="exampleCheck1">Brown</label>
+					  <input type="checkbox" class="form-check-input" id="color-brown">
+					  <label class="form-check-label" for="color-brown">Brown</label>
 					</div>
 				</div>
+				<hr>
 				<h6>Size:</h6>
+				<div class="form-group">
+				  <label for="USSlider">US Sizes: 6.5</label>
+				  <input type="range" min="1" max="12.5" value="6.5" step="0.5" class="form-control-range" id="USSlider">
+				</div>
+				<div class="form-group">
+				  <label for="UKSlider">UK Sizes: 6.5</label>
+				  <input type="range" min="1" max="12.5" value="6.5" step="0.5" class="form-control-range" id="UKSlider">
+				</div>
+				<div class="form-group">
+				  <label for="EURSlider">EUR Sizes: 42.5</label>
+				  <input type="range" min="37.5" max="47.5" value="42.5" step="0.5" class="form-control-range" id="EURSlider">
+				</div>
+				<hr>
+				<h6>Keyword Search:<h6>
+				<div class="form-group">
+					<input id="keywordSearch" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				</div>
 			</div>
 		</div>
-		<%= render partial: 'postings_cards' %>
-
+		<div id="posting-box" class="mx-auto p-2" style="width: 80%;">
+			<h2> Trades For Days... </h2>
+			<div id="post-cards" class="d-flex flex-wrap justify-content-center">
+				<%= render partial: 'postings_cards' %>
+			</div>
+		</div>
+		</div>
 	</div>
 </div>
+
+<script>
+
+$(document).on('turbolinks:load', function(){
+
+	$('#USSlider').change(function(e){
+		var label = $('#USSlider')[0].labels[0]
+		
+		label.innerHTML = `US Sizes: ${e.target.value}`
+
+	});
+
+	$('#UKSlider').change(function(e){
+		var label = $('#UKSlider')[0].labels[0]
+		
+		label.innerHTML = `UK Sizes: ${e.target.value}`
+
+	});
+
+	$('#EURSlider').change(function(e){
+		var label = $('#EURSlider')[0].labels[0]
+		
+		label.innerHTML = `EUR Sizes: ${e.target.value}`
+
+	});
+
+	$('#keywordSearch').keyup(function(e){
+
+		var keyword = e.target.value
+
+		$.ajax({
+			url: '/keyword_search',
+			method: 'GET',
+			data: {search: keyword}
+
+		})
+
+	});
+
+})
+
+</script>
