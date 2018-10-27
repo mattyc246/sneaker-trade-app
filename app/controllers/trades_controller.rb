@@ -35,6 +35,24 @@ class TradesController < ApplicationController
 
 	end
 
+	def destroy
+
+		trade = Trade.find(params[:trade_id])
+
+		if trade.destroy
+
+			flash[:notice] = "You have succesfully retracted your offer!"
+			redirect_to user_trades_path
+
+		else
+
+			flash[:notice] = "Unable to retract offer! If problems persist, contact administrator!"
+			redirect_to user_trades_path
+
+		end
+
+	end
+
 	def show
 
 		@trades = Trade.where(posting_id: params[:posting_id])

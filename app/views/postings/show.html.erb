@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="card mx-auto bg-dark shadow-lg m-2" style="width: 70%;">
 	  <% if @posting.photos? %>
-	 
+	 	<img src="<%= @posting.photos_urls[0] %>" class="card-img-top w-75 mx-auto mt-2">
 	  <% else %>
 	  	<%= image_tag 'profile-photo-fallback.png', class:"card-img-top w-50 mx-auto" %>
 	  <% end %>
