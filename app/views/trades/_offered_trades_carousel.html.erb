@@ -1,0 +1,31 @@
+<div id="carouselExampleControls" class="carousel slide m-3" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <% @trades.each do |trade| %>
+      <div class="card text-center w-75 mx-auto">
+        <div class="card-header bg-secondary">
+          <%= trade.posting.title %>
+        </div>
+        <div class="card-body bg-dark">
+          <h5 class="card-title">Expected Offer:</h5>
+          <p class="card-text"><%= trade.posting.expected_offer %></p>
+          <h5 class="card-title">Trade Offered:</h5>
+          <p class="card-text"><%= trade.offer %></p>
+          <a href="#" class="btn btn-outline-danger">Cancel Trade Offer</a>
+        </div>
+        <div class="card-footer text-body bg-secondary">
+          Trade Offered On: <%= trade.created_at.to_date %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

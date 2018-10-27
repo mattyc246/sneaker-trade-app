@@ -19,7 +19,7 @@ class TradesController < ApplicationController
 		if trade.save
 
 			flash[:notice] = "You have successfully made an offer on #{posting.title}"
-			redirect_to posting_path(posting.id)
+			redirect_to user_trades_path
 
 		else
 
@@ -33,6 +33,13 @@ class TradesController < ApplicationController
 	def show
 
 		@trades = Trade.where(posting_id: params[:posting_id])
+
+	end
+
+	def view_all
+
+		@trades = Trade.where(user_id: current_user.id)
+		@postings = Posting.where(user_id: current_user.id)
 
 	end
 
