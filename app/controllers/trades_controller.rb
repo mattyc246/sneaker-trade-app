@@ -70,7 +70,7 @@ class TradesController < ApplicationController
 
 				if trade.destroy
 
-					flash[:success] = "You have succesfully retracted your offer!"
+					flash[:success] = "You have successfully retracted your offer!"
 					redirect_to user_trades_path
 
 				else
