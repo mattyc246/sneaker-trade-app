@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
 			else
 
-				flash[:alert] = "You are not authorized to do that!"
+				flash[:danger] = "You are not authorized to do that!"
 				redirect_to root_path
 
 			end
@@ -86,7 +86,7 @@ class UsersController < ApplicationController
 
 			else
 
-				flash[:alert] = "You are not authorized to do that!"
+				flash[:danger] = "You are not authorized to do that!"
 				redirect_to root_path
 
 			end
