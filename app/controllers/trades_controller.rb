@@ -68,12 +68,47 @@ class TradesController < ApplicationController
 
 	def accept_trade
 
-		
+		trade = Trade.find(params[:trade_id])
 
+		if trade.offer_status == 'pending'
+
+			trade.accept
+			flash[:notice] = "You have accepted the offer! Congratulations!"
+			Twilio::REST::Client.new.messages.create({
+			from: ENV['twilio_phone_number'],
+			to: '+60176068669',
+			body: "#{current_user.first_name} has accepted your offer for #{trade.posting.title}! You can now arrange with the buyer to make the trade!"
+			})
+			render :json => {newStatus: trade.offer_status}
+
+		else
+
+			flash[:notice] = "This trade has already been accepted!"
+
+		end
 
 	end
 
 	def decline_trade
+
+		trade = Trade.find(params[:trade_id])
+
+		if trade.offer_status == 'pending'
+
+			trade.decline
+			flash[:notice] = "You have declined the offer!"
+			Twilio::REST::Client.new.messages.create({
+			from: ENV['twilio_phone_number'],
+			to: '+60176068669',
+			body: "#{current_user.first_name} has declined your offer for #{trade.posting.title}! Make another offer!"
+			})
+			render :json => {newStatus: trade.offer_status}
+
+		else
+
+			flash[:notice] = "This trade has already been accepted!"
+
+		end
 
 	end
 

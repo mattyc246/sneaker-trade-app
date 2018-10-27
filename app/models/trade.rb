@@ -11,4 +11,18 @@ class Trade < ApplicationRecord
 		self.offer_status = "pending"
 
 	end
+
+	def accept
+
+		self.offer_status = 'accepted'
+		self.save
+
+	end
+
+	def decline
+
+		self.offer_status = 'declined'
+		self.save
+
+	end
 end
