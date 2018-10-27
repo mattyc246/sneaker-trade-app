@@ -18,7 +18,7 @@ class TradesController < ApplicationController
 
 		if trade.save
 
-			flash[:notice] = "You have successfully made an offer on #{posting.title}"
+			flash[:success] = "You have successfully made an offer on #{posting.title}"
 			Twilio::REST::Client.new.messages.create({
 			from: ENV['twilio_phone_number'],
 			to: '+60176068669',
@@ -28,7 +28,7 @@ class TradesController < ApplicationController
 
 		else
 
-			flash[:notice] = "Unable to make a trade offer! If problems persist contact the administrator!"
+			flash[:danger] = "Unable to make a trade offer! If problems persist contact the administrator!"
 			redirect_to new_posting_trades_path(posting.id)
 
 		end
@@ -41,12 +41,12 @@ class TradesController < ApplicationController
 
 		if trade.destroy
 
-			flash[:notice] = "You have succesfully retracted your offer!"
+			flash[:success] = "You have succesfully retracted your offer!"
 			redirect_to user_trades_path
 
 		else
 
-			flash[:notice] = "Unable to retract offer! If problems persist, contact administrator!"
+			flash[:danger] = "Unable to retract offer! If problems persist, contact administrator!"
 			redirect_to user_trades_path
 
 		end
@@ -73,7 +73,7 @@ class TradesController < ApplicationController
 		if trade.offer_status == 'pending'
 
 			trade.accept
-			flash[:notice] = "You have accepted the offer! Congratulations!"
+			flash[:success] = "You have accepted the offer! Congratulations!"
 			Twilio::REST::Client.new.messages.create({
 			from: ENV['twilio_phone_number'],
 			to: '+60176068669',
@@ -83,7 +83,7 @@ class TradesController < ApplicationController
 
 		else
 
-			flash[:notice] = "This trade has already been accepted!"
+			flash[:danger] = "This trade has already been accepted!"
 
 		end
 
@@ -96,7 +96,7 @@ class TradesController < ApplicationController
 		if trade.offer_status == 'pending'
 
 			trade.decline
-			flash[:notice] = "You have declined the offer!"
+			flash[:success] = "You have declined the offer!"
 			Twilio::REST::Client.new.messages.create({
 			from: ENV['twilio_phone_number'],
 			to: '+60176068669',
@@ -106,7 +106,7 @@ class TradesController < ApplicationController
 
 		else
 
-			flash[:notice] = "This trade has already been accepted!"
+			flash[:danger] = "This trade has already been accepted!"
 
 		end
 

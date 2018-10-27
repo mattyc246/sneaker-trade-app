@@ -10,12 +10,12 @@ class UsersController < ApplicationController
 
 		if user.save
 
-			flash[:notice] = "You have succesfully created your account! Sign in to get started!"
+			flash[:success] = "You have succesfully created your account! Sign in to get started!"
 			redirect_to root_path
 
 		else
 
-			flash[:notice] = "Details are incorrect or email is already in use! Please try again!"
+			flash[:danger] = "Details are incorrect or email is already in use! Please try again!"
 			redirect_to sign_up_path
 
 		end
@@ -34,12 +34,12 @@ class UsersController < ApplicationController
 
 		if user.update(user_params)
 
-			flash[:notice] = "Successully updated details!"
+			flash[:success] = "Successully updated details!"
 			redirect_to user_path(user.id)
 
 		else
 
-			flash[:notice] = "Check the details you have provided are correct! Otherwise please contact the administrator!"
+			flash[:danger] = "Check the details you have provided are correct! Otherwise please contact the administrator!"
 			redirect_to user_path(user.id)
 
 		end
@@ -52,13 +52,13 @@ class UsersController < ApplicationController
 
 		if user.destroy
 
-			flash[:notice] = "Your account was Successfully removed! We're sorry to see you go =("
+			flash[:success] = "Your account was Successfully removed! We're sorry to see you go =("
 			session[:user_id] = nil
 			redirect_to root_path
 
 		else
 
-			flash[:notice] = "Something went wrong! Check with the administrator if you have permission to do this!"
+			flash[:danger] = "Something went wrong! Check with the administrator if you have permission to do this!"
 			redirect_to user_path(user.id)
 
 		end
@@ -66,7 +66,6 @@ class UsersController < ApplicationController
 	end
 
 	def sign_up
-
 
 	end
 
@@ -88,11 +87,12 @@ class UsersController < ApplicationController
 			if user.authenticate(user_params[:password])
 
 				session[:user_id] = user.id
-				flash[:notice] = "Successfully Logged In!"
+				flash[:success] = "Successfully Logged In!"
 				redirect_to root_path
 
 			else
 
+				flash[:danger] = "Incorrect credentials! Check & try again!"
 				redirect_to sign_in_path
 
 			end
