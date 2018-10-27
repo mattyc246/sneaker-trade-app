@@ -21,6 +21,7 @@
 	      </li>
 	      <li class="list-group-item bg-dark">Post Date: <%= @posting.created_at.to_date %></li>
 	      <li class="list-group-item bg-dark">Trade by: <%= @posting.user.first_name %> <%= @posting.user.last_name %></li>
+	      <li class="list-group-item bg-dark"><a href="/users/<%= @posting.user_id %>" class="btn btn-outline-primary">View Profile</a></li>
 	    </ul>
 	    <% if current_user.id == @posting.user.id %>
 			<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">Edit Post</button>
