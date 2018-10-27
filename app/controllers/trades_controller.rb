@@ -66,6 +66,14 @@ class TradesController < ApplicationController
 
 	end
 
+	def accept_trade
+
+	end
+
+	def decline_trade
+
+	end
+
 	private
 
 	def trade_params
