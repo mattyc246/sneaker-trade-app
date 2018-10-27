@@ -3,9 +3,9 @@
 	<%= form_for :user, url: {action: "sign_in"} do |f| %>
 	<div class="form-group">
 			<%= f.label 'Email' %>
-			<%= f.text_field :email, class:"form-control"  %></br>
+			<%= f.text_field :email, class:"form-control", placeholder:"stevejobs@apple.com" %></br>
 			<%= f.label 'Password' %>
-			<%= f.password_field :password, class:"form-control"  %></br>
+			<%= f.password_field :password, class:"form-control", placeholder:"********"  %></br>
 			<%= f.submit "Sign In", class:"btn btn-outline-dark" %>
 	</div>
 	<% end %>
