@@ -82,12 +82,27 @@ class PostingsController < ApplicationController
 
 	def keyword_search
 
-		@postings = Posting.search_title(params[:search])
+		if params[:search] != ""
 
-		respond_to do |format|
+			@postings = Posting.search_title(params[:search])
 
-			format.js { @postings }
-			format.html { render 'postings/index' }
+			respond_to do |format|
+
+				format.js { @postings }
+				format.html { render 'postings/index' }
+
+			end
+
+		else
+
+			@postings = Posting.all
+
+			respond_to do |format|
+
+				format.js { @postings }
+				format.html { render 'postings/index' }
+
+			end
 
 		end
 
