@@ -41,11 +41,13 @@ class TradesController < ApplicationController
 
 		if trade.destroy
 
-
+			flash[:notice] = "You have succesfully retracted your offer!"
+			redirect_to user_trades_path
 
 		else
 
-			
+			flash[:notice] = "Unable to retract offer! If problems persist, contact administrator!"
+			redirect_to user_trades_path
 
 		end
 
