@@ -22,8 +22,12 @@
 	      <li class="list-group-item bg-dark">Trades Made: <%= @user.trades.count %></li>
 	      <li class="list-group-item bg-dark">Items Posted: <%= @user.postings.count %></li>
 	    </ul>
-		<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">Edit Profile</button>
-	    <a href="/users/<%= @user.id %>/delete" class="btn btn-outline-danger" data-confirm="Are you sure you wish to remove your account? This cannot be reversed!">Delete Account</a>
+	    <% if current_user.id == @user.id %>
+			<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModalCenter">Edit Profile</button>
+		<% end %>
+		<% if current_user.id == @user.id || superadmin? %>
+	    	<a href="/users/<%= @user.id %>/delete" class="btn btn-outline-danger" data-confirm="Are you sure you wish to remove your account? This cannot be reversed!">Delete Account</a>
+	    <% end %>
 	  </div>
 	</div>
 </div>
@@ -32,7 +36,11 @@
 	<div class="d-flex flex-wrap justify-content-center">
 		<% @user.postings.each do |post| %>	
 			<div class="card m-2 bg-dark border border-white shadow" style="width: 16rem;">
-		  <%= image_tag 'placard.svg', class:'card-img-top' %>
+		<% if post.photos %>
+		  <img src="<%= post.photos_urls.sample %>" class="card-img-top">
+		<% else %>
+		  <%= image_tag 'placard.svg', class:"card-img-top" %>
+		<% end %>
 		  <div class="card-body">
 		  	<h6 class="card-subtitle mb-2 text-light"><%= post.created_at.to_date %></h6>
 		  	<h5 class="card-title"><%= post.brand %></h5>
@@ -47,7 +55,9 @@
 	        <li class="list-group-item text-body">Size: <%= post.size %></li>
 	      </ul>
 	      <%= link_to 'View Post', posting_path(post.id), class:"btn btn-outline-success" %>
-	      <%= link_to 'Delete Post', posting_path(post.id), class:"btn btn-outline-danger", confirm:"Are you sure you wish to delete? Effects cannot be reversed" %>
+	      <% if current_user.id == post.user_id || superadmin? %>
+	      	<%= link_to 'Delete Post', posting_path(post.id), class:"btn btn-outline-danger", confirm:"Are you sure you wish to delete? Effects cannot be reversed" %>
+	      <% end %>
 		</div>
 		<% end %>
 	</div>
