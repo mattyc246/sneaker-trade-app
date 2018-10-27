@@ -12,7 +12,7 @@
           <p class="card-text"><%= trade.posting.expected_offer %></p>
           <h5 class="card-title">Trade Offered:</h5>
           <p class="card-text"><%= trade.offer %></p>
-          <a href="#" class="btn btn-outline-danger">Cancel Trade Offer</a>
+          <%= button_to "Cancel Trade Offer", posting_trades_path(trade.id), method: (:delete), class:"btn btn-outline-danger" %>
         </div>
         <div class="card-footer text-body bg-secondary">
           Trade Offered On: <%= trade.created_at.to_date %>
@@ -30,7 +30,7 @@
           <p class="card-text"><%= trade.posting.expected_offer %></p>
           <h5 class="card-title">Trade Offered:</h5>
           <p class="card-text"><%= trade.offer %></p>
-          <a href="#" class="btn btn-outline-danger">Cancel Trade Offer</a>
+          <%= button_to "Cancel Trade Offer", posting_trades_path(trade.id), method: (:delete), class:"btn btn-outline-danger" %>
         </div>
         <div class="card-footer text-body bg-secondary">
           Trade Offered On: <%= trade.created_at.to_date %>
