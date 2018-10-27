@@ -1,5 +1,12 @@
 class TradesController < ApplicationController
 
+	def index
+
+		@trades = Trade.where(user_id: current_user.id)
+		@postings = Posting.where(user_id: current_user.id)
+
+	end
+
 	def new
 
 		@posting = Posting.find(params[:posting_id])
@@ -35,16 +42,15 @@ class TradesController < ApplicationController
 
 	end
 
-	def show
+	def destroy
 
-		@trades = Trade.where(posting_id: params[:posting_id])
+		byebug
 
 	end
 
-	def view_all
+	def show
 
-		@trades = Trade.where(user_id: current_user.id)
-		@postings = Posting.where(user_id: current_user.id)
+		@trades = Trade.where(posting_id: params[:posting_id])
 
 	end
 
