@@ -45,6 +45,12 @@ gem 'jquery-rails'
 # Simple Search & Multi-Search Gem
 gem 'pg_search'
 
+# Gem for hiding API keys and keeping them secure
+gem "figaro"
+
+# Twilio SMS Gem
+gem 'twilio-ruby', '~> 5.15.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
