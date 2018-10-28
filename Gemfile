@@ -51,6 +51,12 @@ gem "figaro"
 # Twilio SMS Gem
 gem 'twilio-ruby', '~> 5.15.1'
 
+# Omniauth Gem
+gem 'omniauth'
+
+# Google Omniauth Gem
+gem "omniauth-google-oauth2"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
