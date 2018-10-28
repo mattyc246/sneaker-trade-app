@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   get '/users/:id/delete' => 'users#destroy', as: 'user_delete'
   patch '/users/:id/update' => 'users#update', as: 'user_update'
-  
+  get "/auth/:provider/callback" => "users#create_from_omniauth"
+ 
+
   resources :users
 
   get '/post_search' => 'postings#index', as: 'posting_search'
