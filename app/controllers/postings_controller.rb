@@ -14,7 +14,16 @@ class PostingsController < ApplicationController
 
 	def show
 
-		@posting = Posting.find(params[:id])
+		if logged_in?
+
+			@posting = Posting.find(params[:id])
+
+		else
+
+			redirect_to sign_in_path
+
+		end
+
 
 	end
 
