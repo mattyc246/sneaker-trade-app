@@ -130,8 +130,8 @@ class TradesController < ApplicationController
 		if logged_in?
 
 			trade = Trade.find(params[:trade_id])
-
-			if current_user.id == trade.user_id || superadmin?
+			
+			if current_user.id != trade.user_id || superadmin?
 
 				if trade.offer_status == 'pending'
 
@@ -170,7 +170,7 @@ class TradesController < ApplicationController
 
 			trade = Trade.find(params[:trade_id])
 
-			if current_user.id == trade.user_id || superadmin?
+			if current_user.id != trade.user_id || superadmin?
 
 				if trade.offer_status == 'pending'
 
