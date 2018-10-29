@@ -34,7 +34,7 @@ class TradesController < ApplicationController
 					Twilio::REST::Client.new.messages.create({
 					from: ENV['twilio_phone_number'],
 					to: '+60176068669',
-					body: "Someone has made an offer on your '#{posting.title}'. To view now, go to: "
+					body: "Someone has made an offer on your '#{posting.title}'. To view now, go to: https://shrade.herokuapp.com/postings/#{posting.id} "
 					})
 					redirect_to user_trades_path
 
@@ -97,7 +97,16 @@ class TradesController < ApplicationController
 
 	def show
 
-		@trades = Trade.where(posting_id: params[:posting_id])
+		if logged_in?
+
+			@trades = Trade.where(posting_id: params[:posting_id])
+
+		else
+
+			redirect_to sign_in_path
+
+		end
+
 
 	end
 

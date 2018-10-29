@@ -32,7 +32,7 @@ User.all.each { |u| uids << u.id }
 ActiveRecord::Base.transaction do
   40.times do 
     posting['title'] = Faker::Hipster.sentence
-    posting['brand'] = ["Adidas","Nike","Puma","Yeezy","","Boutique Hotel"].sample
+    posting['brand'] = ["Adidas","Jordan","Nike","Puma","Reebok","Vans", "Yeezy"].sample
     posting['style'] = Faker::Hipster.word
     posting['color'] = Faker::Color.color_name
     posting['expected_offer'] = Faker::Hipster.sentence
@@ -42,6 +42,6 @@ ActiveRecord::Base.transaction do
     posting['sneaker_type'] = ['High Top', 'Low Top', 'Basketball Shoe', 'Running Shoe', 'Tennis Shoe'].sample
     posting['user_id'] = uids.sample
 
-    Listing.create(listing)
+    Posting.create(posting)
   end
 end
